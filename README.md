@@ -4,6 +4,8 @@ This page describes the public API of the Widr app.
 
 * [General](#general)
 * [Commands](#commands)
+* [Drives](#drives)
+* [Platforms](#platforms)
 
 ## General
 
@@ -73,7 +75,7 @@ This is done in 2 ways, but the idea is to always set a value to a key:
 
 The following commands are available in Widr. This list is not exhaustive and should be adapted with different target/request users and specific parameters.
 
-## Pipes
+### Pipes
 
 Using pipes in command is still in testing and will be documented later, but using pipes between 2 commands to share data is already possible when the command receiving the other command's data supports it.
 
@@ -92,7 +94,7 @@ Side note: All user files are listed in the `//home` folder. This folder acts as
 * Create an empty file : `fs touch //home/new_file.txt`
 * Delete a file : `fs delete //home/my_file.txt`
 
-### Drives
+## Drives
 
 A drive is a global folder, available on Widr (in this case the `//home` drive) or on a platform that supports drives.
 
@@ -153,7 +155,7 @@ This list is managed as regular lists, but keep in mind that all that is added t
 
 To be completed.
 
-### Platforms
+## Platforms
 
 When targeting a specific platform other than Widr the name of the platform has to be specified either as the subject or by using the platform accessor:
 * As subject: youtube get likes
@@ -161,7 +163,7 @@ When targeting a specific platform other than Widr the name of the platform has 
 
 Both will produce exactly the same result.
 
-#### Tumblr
+### Tumblr
 
 * Get the current user's timeline: `tumblr get timeline`
 * Get the current user's likes: `tumblr get likes`
