@@ -73,6 +73,16 @@ This is done in 2 ways, but the idea is to always set a value to a key:
 
 The following commands are available in Widr. This list is not exhaustive and should be adapted with different target/request users and specific parameters.
 
+## Pipes
+
+Using pipes in command is still in testing and will be documented later, but using pipes between 2 commands to share data is already possible when the command receiving the other command's data supports it.
+
+The format for using pipes is :
+
+`file //home/my_file.txt || echo 'inject this data'`
+
+Note that not all commands support pipes and using pipes on non pipable commands could produce strange results in the current version.
+
 ### FS controller
 
 Side note: All user files are listed in the `//home` folder. This folder acts as a drive (see the Drives section below for more details), and can therefore be directly refered as `//home`, without specifying the fs controller. In reality, this is then converted in the background as `fs folder //home`. But writing `//home` is just faster and more convenient.
@@ -81,7 +91,6 @@ Side note: All user files are listed in the `//home` folder. This folder acts as
 * Read a file : `file //home/my_file.txt` or `fs file //home/my_file.txt`
 * Create an empty file : `fs touch //home/new_file.txt`
 * Delete a file : `fs delete //home/my_file.txt`
-
 
 ### Drives
 
@@ -115,20 +124,51 @@ Writing to a drive can be used via a pipe to write to a folder or to a file.
 
 ### User controller
 
+The user controller manages all user related actions. Those include retrieving the list of Widr users, creating/retrieving aliases, creating/retriving lists and managing the logged user's profile.
+
+#### Aliases
+
+An alias is a user defined user that encapsulates a list of users, generally on other platforms. This is useful for creating a user that has multiple platforms as a single one and follow his activity easily.
+
+#### Lists
+
+A list is a group of users or commands. An user can created as many lists as he likes, so he can then get all of the listed users' timelines, or execute a group of actions. As lists can be used for many things they are also sometimes refered as `groups`, but both are the same.
+
+A list is specified in a command using the `@list[list_name]` target.
+
+A list will in fact be a combination of users or commands, meaning that all elements of this list will be take each and the specified command will be executed agains each item.
+
+Examples of list operations:
+* `@list[my_list] get timeline` : take each `person` element from the list and apply the `get timelines` command.
+* `@list[my_list] #fun` : take each `person` element from the list and apply the special command `#fun` (= get tagged tag is 'fun') to each item.
+* `@list[my_list]` : take each `person` element from the list only and execute it.
+
+#### The Following list
+
+The `following` list is a system list that cannot be deleted. This list contains all users and commands that should be retrieved when getting the user's timelines (aka using the command `get timelines`). This is in fact a shortcut to using `@list[following] get timeline`.
+
+This list is managed as regular lists, but keep in mind that all that is added to this list will be retrieved in the timelines, and all that is removed will stop showing up in the timelines.
+
 ### App controller
+
+To be completed.
 
 ### Platforms
 
+When targeting a specific platform other than Widr the name of the platform has to be specified either as the subject or by using the platform accessor:
+* As subject: youtube get likes
+* Using the platform accessor : @platform[youtube] get likes
+
+Both will produce exactly the same result.
+
 #### Tumblr
 
-Get the current user's timeline: `tumblr get timeline`
+* Get the current user's timeline: `tumblr get timeline`
+* Get the current user's likes: `tumblr get likes`
+* Get the current user's profile: `tumblr get profile`
+* Get the current user's items tagged with #fun: `tumblr #fun`
 
-## Pipes
+Note that all of these commands can be transposed to another Tumblr user by targeting it as @target_user:
+* `@user_x tumblr #fun` : Will get the items tagged with #fun from the Tumblr user `user_x`
 
-Using pipes in command is still in testing and will be documented later, but using pipes between 2 commands to share data is already possible when the command receiving the other command's data supports it.
-
-The format for using pipes is :
-
-`file //home/my_file.txt || echo 'inject this data'`
-
-Note that not all commands support pipes and using pipes on non pipable commands could produce strange results in the current version.
+Documentation to be completed for each available platform.
