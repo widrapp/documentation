@@ -132,7 +132,7 @@ Below is a non complete list of possible commands on  the main controller:
 * `get activity` : get the current user's activity
 * `get timelines` : get the current user's timelines (the list of users and commands in the 'following' list)
 
-Note that all commands above (except like, unlike, later, unalter, aside and unaside) can be applied on another user by prefixing them by `@username`. If the user has restricted access an Unauthorized resource may be returned though.
+Note that all commands above (except like, unlike, later, unlater, aside and unaside) can be applied on another user by prefixing them by `@username`. If the user has restricted access an Unauthorized resource may be returned though.
 
 ### System commands
 
