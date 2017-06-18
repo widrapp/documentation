@@ -4,6 +4,7 @@ This page describes the public API of the Widr app.
 
 * [General](#general)
 * [Controllers](#controllers)
+* [Commands](#commands)
 * [Drives](#drives)
 * [Platforms](#platforms)
 
@@ -112,6 +113,25 @@ Examples of list operations:
 ### App controller
 
 To be completed.
+
+## Commands
+
+Below is a non complete list of possible commands:
+* `#tag_name` : get all resources tagged with 'tag_name'. Is the same as `get tagged tag is 'tag_name'`
+* `get likes` : get all liked resources
+* `get laters` : get all resources marked as later
+* `get asides` : get all resources marked as aside
+* `tag resid is 'resource_id' name is 'tag_name'` : tag a given resource ID with a given tag
+* `get tags` : get the list of tags created by the user
+* `get activity` : get the current user's activity
+* `get timelines` : get the current user's timelines (the list of users and commands in the 'following' list)
+
+Note that all commands above can be applied on another user by prefixing them by `@username`. If the user has restricted access an Unauthorized resource may be returned though.
+
+### System commands
+
+* `clear cache` : clear the cache. Might be useful to get the last items on a platform as most calls are cached for 10 minutes
+* `get state device is 'device_name'` : get the last desktop state on a given device. The state is the resources shown on the desktop of a given device. The default device name is 'browser'.
 
 ## Drives
 
