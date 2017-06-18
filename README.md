@@ -153,9 +153,9 @@ When targeting a specific platform other than Widr the name of the platform has 
 
 Both will produce exactly the same result.
 
-#### List of available platforms
+### List of available platforms
 
-##### Tumblr
+#### Tumblr
 
 * Get the current user's timeline: `tumblr get timeline`
 * Get the current user's likes: `tumblr get likes`
@@ -164,5 +164,6 @@ Both will produce exactly the same result.
 
 Note that all of these commands can be transposed to another Tumblr user by targeting it as @target_user:
 * `@user_x tumblr #fun` : Will get the items tagged with #fun from the Tumblr user `user_x`
+
 
 Documentation to be completed for each available platform.
