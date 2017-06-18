@@ -96,17 +96,11 @@ Side note: All user files are listed in the `//home` folder. This folder acts as
 
 ## Drives
 
-A drive is a global folder, available on Widr (in this case the `//home` drive) or on a platform that supports drives.
+Drives can be accessed in 2 ways:
+* Using the drive shortcut `//drive_name`. Ex: `//home`, `//googleDrive`
+* Using the full command `get drive name is 'drive_name'`. Ex: `get drive name is 'googleDrive'`
 
-The complete list of drives is :
-
-* `//home` : the logged user's folder in Widr
-* `//googleDrive` : the logged user's folder on Google Drive
-* `//flickr` : the logged user's folder on Flickr
-* `//youtube` : the logged user's folder on Youtube
-* `//dropbox` : the logged user's folder on dropbox
-
-Note that using a drive other than Widr requires that the user has authentified and allowed the access to the platform. If not, an AuthorizationRequest will be sent so the user allows access via the Oauth workflow.
+For more information about drivesrefer to the page [Drives](Drives.md)
 
 #### Accessing folders and files in drives
 
@@ -128,13 +122,9 @@ Writing to a drive can be used via a pipe to write to a folder or to a file.
 
 The user controller manages all user related actions. Those include retrieving the list of Widr users, creating/retrieving aliases, creating/retriving lists and managing the logged user's profile.
 
-#### Aliases
+For more information about users and lists refer to the page [Users and lists](Users%20and%20lists.md)
 
-An alias is a user defined user that encapsulates a list of users, generally on other platforms. This is useful for creating a user that has multiple platforms as a single one and follow his activity easily.
-
-An alias is defined in a command as `@alias[alias_name]` as the target user.
-
-### The '+' operator
+### Combining mutliple users with the '+' operator
 
 It is possible to apply a single command on 2+ different users by combining the target users using the + operator.
 
@@ -151,7 +141,6 @@ Examples of list operations:
 * `@list[my_list] #fun` : take each `person` element from the list and apply the special command `#fun` (= get tagged tag is 'fun') to each item.
 * `@list[my_list]` : take each `person` element from the list only and execute it.
 
-For more information about lists refer to the page [Users and lists](Users%20and%20lists.md)
 
 ### App controller
 
