@@ -3,7 +3,7 @@
 This page describes the public API of the Widr app.
 
 * [General](#general)
-* [Commands](#commands)
+* [Controllers](#controllers)
 * [Drives](#drives)
 * [Platforms](#platforms)
 
@@ -35,16 +35,6 @@ The following controllers are available:
 * `app` : manages external apps, such as the weather app
 * `user` : manages all user related actions
 
-### Platforms
-
-In addition to controllers commands can be executed against a specific platform. Those are pre-defined in Widr and support a number of operations based on what is possible via their public APIs. See the list of platform commands for a detailed list of available platforms.
-
-A platform can be specified using `@platform[platform_name]`, or can be abbreviated to only the platform name as the subject of the command.
-
-For instance, both examples are valid:
-* `@platform[youtube] get likes`
-* `youtube get likes`
-
 ### Target and request users
 
 A command will target 2 types of users:
@@ -69,11 +59,7 @@ Parameters can be added to a command after the action and/or action complement.
 
 This is done in 2 ways, but the idea is to always set a value to a key:
 * Using the `=` operator. Ex: `myvariable = value`
-* Using the `set / is` keywords. Ex: `set myvariable is value`
-
-## Commands
-
-The following commands are available in Widr. This list is not exhaustive and should be adapted with different target/request users and specific parameters.
+* Using the `is` keyword. Ex: `myvariable is value`
 
 ### Pipes
 
@@ -85,6 +71,8 @@ The format for using pipes is :
 
 Note that not all commands support pipes and using pipes on non pipable commands could produce strange results in the current version.
 
+## Controllers
+
 ### FS controller
 
 Side note: All user files are listed in the `//home` folder. This folder acts as a drive (see the Drives section below for more details), and can therefore be directly refered as `//home`, without specifying the fs controller. In reality, this is then converted in the background as `fs folder //home`. But writing `//home` is just faster and more convenient.
@@ -94,37 +82,13 @@ Side note: All user files are listed in the `//home` folder. This folder acts as
 * Create an empty file : `fs touch //home/new_file.txt`
 * Delete a file : `fs delete //home/my_file.txt`
 
-## Drives
-
-Drives can be accessed in 2 ways:
-* Using the drive shortcut `//drive_name`. Ex: `//home`, `//googleDrive`
-* Using the full command `get drive name is 'drive_name'`. Ex: `get drive name is 'googleDrive'`
-
-For more information about drivesrefer to the page [Drives](Drives.md)
-
-#### Accessing folders and files in drives
-
-Accessing folders and files in drives is done by refering the drive and the path to be accessed:
-
-* `//home/my_folder/my_file.txt`
-* `//googleDrive/my_file_id`
-
-Note that in some cases the platform will use IDs instead of understandable paths. This is due to how the platform handles files and cannot be changed. This makes browsing the files via the command lines a bit more difficult but is transparent while using the UI.
-
-#### Writing to a drive
-
-Writing to a drive can be used via a pipe to write to a folder or to a file.
-
-* `//home/my_folder || file //home/my_file.txt`
-* `//googleDrive/my_file_id || echo 'some text'`
-
 ### User controller
 
 The user controller manages all user related actions. Those include retrieving the list of Widr users, creating/retrieving aliases, creating/retriving lists and managing the logged user's profile.
 
 For more information about users and lists refer to the page [Users and lists](Users%20and%20lists.md)
 
-### Combining mutliple users with the '+' operator
+### Combining multiple users with the '+' operator
 
 It is possible to apply a single command on 2+ different users by combining the target users using the + operator.
 
@@ -141,12 +105,43 @@ Examples of list operations:
 * `@list[my_list] #fun` : take each `person` element from the list and apply the special command `#fun` (= get tagged tag is 'fun') to each item.
 * `@list[my_list]` : take each `person` element from the list only and execute it.
 
-
 ### App controller
 
 To be completed.
 
+## Drives
+
+Drives can be accessed in 2 ways:
+* Using the drive shortcut `//drive_name`. Ex: `//home`, `//googleDrive`
+* Using the full command `get drive name is 'drive_name'`. Ex: `get drive name is 'googleDrive'`
+
+For more information about drivesrefer to the page [Drives](Drives.md)
+
+### Accessing folders and files in drives
+
+Accessing folders and files in drives is done by refering the drive and the path to be accessed:
+
+* `//home/my_folder/my_file.txt`
+* `//googleDrive/my_file_id`
+
+Note that in some cases the platform will use IDs instead of understandable paths. This is due to how the platform handles files and cannot be changed. This makes browsing the files via the command lines a bit more difficult but is transparent while using the UI.
+
+### Writing to a drive
+
+Writing to a drive can be used via a pipe to write to a folder or to a file.
+
+* `//home/my_folder || file //home/my_file.txt`
+* `//googleDrive/my_file_id || echo 'some text'`
+
 ## Platforms
+
+In addition to controllers commands can be executed against a specific platform. Those are pre-defined in Widr and support a number of operations based on what is possible via their public APIs. See the list of platform commands for a detailed list of available platforms.
+
+A platform can be specified using `@platform[platform_name]`, or can be abbreviated to only the platform name as the subject of the command.
+
+For instance, both examples are valid:
+* `@platform[youtube] get likes`
+* `youtube get likes`
 
 When targeting a specific platform other than Widr the name of the platform has to be specified either as the subject or by using the platform accessor:
 * As subject: youtube get likes
@@ -154,7 +149,9 @@ When targeting a specific platform other than Widr the name of the platform has 
 
 Both will produce exactly the same result.
 
-### Tumblr
+#### List of available platforms
+
+##### Tumblr
 
 * Get the current user's timeline: `tumblr get timeline`
 * Get the current user's likes: `tumblr get likes`
