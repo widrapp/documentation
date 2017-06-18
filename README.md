@@ -119,8 +119,14 @@ To be completed.
 Below is a non complete list of possible commands on  the main controller:
 * `#tag_name` : get all resources tagged with 'tag_name'. Is the same as `get tagged tag is 'tag_name'`
 * `get likes` : get all liked resources
+* `like resid is 'resource_id'` : like a resource
+* `unlike resid is 'resource_id'` : unlike a resource
 * `get laters` : get all resources marked as later
+* `later resid is 'resource_id'` : later a resource
+* `unlater resid is 'resource_id'` : unlater a resource
 * `get asides` : get all resources marked as aside
+* `aside resid is 'resource_id'` : aside a resource
+* `unaside resid is 'resource_id'` : unaside a resource
 * `tag resid is 'resource_id' name is 'tag_name'` : tag a given resource ID with a given tag
 * `get tags` : get the list of tags created by the user
 * `get activity` : get the current user's activity
