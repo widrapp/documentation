@@ -116,7 +116,7 @@ To be completed.
 
 ## Commands
 
-Below is a non complete list of possible commands:
+Below is a non complete list of possible commands on  the main controller:
 * `#tag_name` : get all resources tagged with 'tag_name'. Is the same as `get tagged tag is 'tag_name'`
 * `get likes` : get all liked resources
 * `get laters` : get all resources marked as later
