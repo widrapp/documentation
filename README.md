@@ -88,11 +88,15 @@ The user controller manages all user related actions. Those include retrieving t
 
 For more information about users and lists refer to the page [Users and lists](Users%20and%20lists.md)
 
-### Combining multiple users with the '+' operator
+#### Combining multiple users with the '+' operator
 
 It is possible to apply a single command on 2+ different users by combining the target users using the + operator.
 
 Ex: `@user1+@user2 get likes` : this command will be transformed to `@user1 get likes && @user2 get likes` so the command `get likes` will be applied to both users.
+
+#### Aliases
+
+An alias is specified in a command using the `@alias[alias_name]` target user.
 
 #### Lists
 
