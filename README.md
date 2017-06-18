@@ -132,13 +132,19 @@ The user controller manages all user related actions. Those include retrieving t
 
 An alias is a user defined user that encapsulates a list of users, generally on other platforms. This is useful for creating a user that has multiple platforms as a single one and follow his activity easily.
 
+### The '+' operator
+
+It is possible to apply a single command on 2+ different users by combining the target users using the + operator.
+
+Ex: `@user1+@user2 get likes` : this command will be transformed to `@user1 get likes && @user2 get likes` so the command `get likes` will be applied to both users.
+
 #### Lists
 
 A list is a group of users or commands. An user can created as many lists as he likes, so he can then get all of the listed users' timelines, or execute a group of actions. As lists can be used for many things they are also sometimes refered as `groups`, but both are the same.
 
 A list is specified in a command using the `@list[list_name]` target.
 
-A list will in fact be a combination of users or commands, meaning that all elements of this list will be take each and the specified command will be executed agains each item.
+A list will in fact be a combination of users or commands, meaning that all elements of this list will be taken each and the specified command will be executed against each item.
 
 Examples of list operations:
 * `@list[my_list] get timeline` : take each `person` element from the list and apply the `get timelines` command.
