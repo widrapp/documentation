@@ -155,15 +155,73 @@ Both will produce exactly the same result.
 
 ### List of available platforms
 
+
+#### Twitter
+
+* Get the current user's timeline: `twitter get timeline`
+* Get the current user's recommendations of users to follow: `twitter get recommendations`
+* Get the current user's favorite tweets: `twitter get favorite`
+* Get a given user's timeline: `@user_name twitter get timeline`
+* Get the current user's lists `twitter get lists`
+* Get a given list's timeline: `@list[list_name] twitter get timeline`
+* Get the current user's list of users he is following: `twitter get following`
+* Get the current user's usres that are following him: `twitter get followers`
+
 #### Tumblr
 
 * Get the current user's timeline: `tumblr get timeline`
+* Get a given user's timeline: `@username tumblr get timeline`
 * Get the current user's likes: `tumblr get likes`
 * Get the current user's profile: `tumblr get profile`
 * Get the current user's items tagged with #fun: `tumblr #fun`
+* Get the current user's list of users he is following: `tumblr get following`
+* Get the current user's personal blog (what he has posted in his own Tumblr): `tumblr browse`
 
 Note that all of these commands can be transposed to another Tumblr user by targeting it as @target_user:
 * `@user_x tumblr #fun` : Will get the items tagged with #fun from the Tumblr user `user_x`
 
 
-Documentation to be completed for each available platform.
+#### Youtube
+
+* Get the current user's timeline: `youtube get subscriptions`
+* Get the current user's favorite videos: `youtube get favorites`
+* Get the current user's liked videos: `youtube get likes`
+* Get the current user's playlists: `youtube get playlists`
+* Get a given playlist videos: `youtube get playlist id is playlist_id`
+* Get the current user's list of users he is following: `youtube get following`
+* Get the current user's profile: `youtube get profile`
+* Get a given user's videos: `@username youtube get timeline`
+* Search videos: `youtube search 'some keywords'`
+* Get a given video based on its ID: `youtube get video id is 'video_id'`
+
+#### Vimeo
+
+* Get the current user's timeline: `vimeo get subscriptions`
+* Get the current user's liked videos: `vimeo get likes`
+* Get a given user's timeline: `@username vimeo get timeline`
+* Get the current user's videos marked as 'watch later': `vimeo get laters`
+
+#### Dailymotion
+
+* Get a given video based on its ID: `dailymotion get video id is 'video_id'`
+
+#### Flickr
+
+* Get the current user's timeline: `flickr get timeline`
+* Get a given user's timeline: `@username flickr get timeline`
+
+#### 500px
+
+* Get the current user's timeline: `500px get timeline`
+* Get the current user's favorites: `500px get favorites`
+* Get a given user's timeline: `@username 500px get timeline`
+* Get a given user's favorites: `@username 500px get favorites`
+
+#### DeviantArt
+
+* Get a given user's timeline: `@username deviantart get timeline`
+
+#### Google Drive
+
+* Get a given user's google drive root folder: `googledrive browse`
+
