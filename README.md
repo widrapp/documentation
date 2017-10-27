@@ -68,9 +68,20 @@ Using pipes in command is still in testing and will be documented later, but usi
 
 The format for using pipes is :
 
-`file //home/my_file.txt || echo 'inject this data'`
+`file //home/my_file.txt | echo 'inject this data'`
 
 Note that not all commands support pipes and using pipes on non pipable commands could produce strange results in the current version.
+
+### The +@ and -@ operators
+
+When adding a resource (ie an user or a file) to a list the +@username shortcut can be used.
+This is equivalent to @user@list [mylist] add.
+
+Special cases: 
++@user : will return a request for a list creation or a direct message.
++@user ##123 : will send a resource to an user. This is because the +@ operator is mapped to the send action in this case, allowing a faster way to send stuff to users.
++@u@user "hello" : will send a direct message to user.
+
 
 ## Controllers
 
@@ -107,8 +118,19 @@ A list will in fact be a combination of users or commands, meaning that all elem
 
 Examples of list operations:
 * `@list[my_list] get timeline` : take each `person` element from the list and apply the `get timelines` command.
-* `@list[my_list] #fun` : take each `person` element from the list and apply the special command `#fun` (= get tagged tag is 'fun') to each item.
+* `@list[my_list] #fun` : take each `person` element from the list and apply the special command `#tag
 * `@list[my_list]` : take each `person` element from the list only and execute it.
+* +@user@l@user@list [mylist] : add user to the members of the list
+* @list [mylist] msg "hello" : send a message to all members of the list
+* +@list [mylist] ##123 : post a local resource to the list
+* @list [mylist] http://site/image.png : post a distant image to the list
+* +@list [mylist] private is true / list [mylist] add/create private is true : create a new list
+* -@user@list [mylist] : remove user from the list
+As lists can be public if no user is specified it will first try to get a public list (@global@li@global@list [name]).
+This means that if an user has created a private list travel but one already exists globally @list [travel] will return the items from the public list.
+To get items from the private list the @me special user should be specified or the user's name should be used.
+Ex: @me@list [travel] : will return items from the local list
+@list [travel] : will return items from the global list
 
 ### App controller
 
@@ -160,8 +182,8 @@ Note that in some cases the platform will use IDs instead of understandable path
 
 Writing to a drive can be used via a pipe to write to a folder or to a file.
 
-* `//home/my_folder || file //home/my_file.txt`
-* `//googleDrive/my_file_id || echo 'some text'`
+* `//home/my_folder | file //home/my_file.txt`
+* `//googleDrive/my_file_id | echo 'some text'`
 
 ## Platforms
 
